@@ -1,16 +1,16 @@
 export interface DayTasks {
-  workout1: boolean;   // 45-min workout (any location)
-  workout2: boolean;   // 45-min outdoor workout
-  water: boolean;      // 1 gallon of water
-  diet: boolean;       // Followed diet, no cheat meals
-  reading: boolean;    // 10 pages non-fiction
-  photo: boolean;      // Progress photo
+  workout1: boolean;
+  workout2: boolean;
+  water: boolean;
+  diet: boolean;
+  reading: boolean;
+  photo: boolean;
 }
 
 export interface DayRecord {
-  date: string;        // YYYY-MM-DD
+  date: string;
   tasks: DayTasks;
-  completed: boolean;  // all 6 tasks done before midnight
+  completed: boolean;
 }
 
 export interface ChallengeState {
@@ -21,12 +21,21 @@ export interface ChallengeState {
 }
 
 export const TASK_LABELS: Record<keyof DayTasks, string> = {
-  workout1: 'Workout #1 (45 min)',
-  workout2: 'Outdoor Workout #2 (45 min)',
+  workout1: 'Workout #1',
+  workout2: 'Workout #2 (outdoor)',
   water:    'Drink 1 Gallon of Water',
-  diet:     'Follow Your Diet (no cheat meals)',
+  diet:     'Follow Your Diet',
   reading:  'Read 10 Pages',
-  photo:    'Take a Progress Photo',
+  photo:    'Progress Photo',
+}
+
+export const TASK_SUBS: Record<keyof DayTasks, string> = {
+  workout1: '45 min · any location',
+  workout2: '45 min · must be outside',
+  water:    'No cheat — full gallon',
+  diet:     'No cheat meals, no alcohol',
+  reading:  'Non-fiction or self-help book',
+  photo:    'One photo, every day',
 }
 
 export const TASK_ICONS: Record<keyof DayTasks, string> = {

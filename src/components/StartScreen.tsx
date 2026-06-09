@@ -16,38 +16,28 @@ const rules = [
 
 export default function StartScreen({ onStart }: Props) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <h1 className="text-6xl font-black text-orange-500 mb-1">75</h1>
-          <h2 className="text-3xl font-black text-white tracking-wide">HARD</h2>
-          <p className="mt-3 text-gray-400 text-sm">
-            75 days. 6 daily tasks. No excuses. Miss one and you restart.
-          </p>
-        </div>
+    <div className="start-wrap">
+      <div className="start-hero">
+        <div className="big-num">75</div>
+        <div className="big-label">HARD</div>
+        <p>75 days. 6 daily tasks. No excuses.<br />Miss one and you restart from day 1.</p>
+      </div>
 
-        <div className="bg-gray-900 rounded-2xl p-6 mb-8 space-y-4">
-          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">
-            The Rules
-          </h3>
-          {rules.map(({ icon, text }) => (
-            <div key={text} className="flex items-center gap-3">
-              <span className="text-xl w-7 text-center shrink-0">{icon}</span>
-              <span className="text-sm text-gray-200">{text}</span>
-            </div>
-          ))}
-        </div>
+      <div className="card rules-card">
+        <div className="section-title" style={{ margin: '0 0 10px' }}>The Rules</div>
+        {rules.map(({ icon, text }) => (
+          <div key={text} className="rule-row">
+            <span className="rule-emoji">{icon}</span>
+            <span className="rule-text">{text}</span>
+          </div>
+        ))}
+      </div>
 
-        <button
-          onClick={() => onStart(startChallenge())}
-          className="w-full bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition-colors"
-        >
+      <div className="start-btn-wrap">
+        <button className="btn-primary" onClick={() => onStart(startChallenge())}>
           Start the Challenge
         </button>
-
-        <p className="mt-4 text-center text-xs text-gray-600">
-          All data is stored locally on your device.
-        </p>
+        <p className="start-footer">All data is stored locally on your device.</p>
       </div>
     </div>
   )
