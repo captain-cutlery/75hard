@@ -8,7 +8,6 @@ const emptyTasks = (): DayTasks => ({
   water: false,
   diet: false,
   reading: false,
-  photo: false,
 })
 
 const defaultState = (): ChallengeState => ({
