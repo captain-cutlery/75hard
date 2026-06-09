@@ -1,6 +1,7 @@
 import type { ChallengeState } from '../types'
 import { TASK_ORDER, TASK_LABELS, TASK_ICONS } from '../types'
 import { todayStr } from '../storage'
+import { exportToday, exportAll } from '../export'
 
 interface Props {
   state: ChallengeState
@@ -34,6 +35,18 @@ export default function History({ state }: Props) {
         {state.history.filter((r) => r.completed).length} of {state.history.length} days completed perfectly.
       </p>
 
+      <div className="section-title">Your data</div>
+      <p className="lede">Stored only on this device. Export regularly as a backup.</p>
+      <div className="btn-row" style={{ marginBottom: 12 }}>
+        <button className="btn-outline" onClick={() => exportToday(state)}>
+          Today → vault
+        </button>
+        <button className="btn-outline" onClick={() => exportAll(state)}>
+          All days (zip)
+        </button>
+      </div>
+
+      <div className="section-title">History</div>
       {records.map((record, i) => {
         const dayNum = state.history.length - i
         const isToday = record.date === today
