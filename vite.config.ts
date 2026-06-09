@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS ? '/75hard/' : '/',
   plugins: [
     react(),
     VitePWA({
@@ -12,8 +13,8 @@ export default defineConfig({
         name: '75 Hard Tracker',
         short_name: '75 Hard',
         description: 'Track your 75 Hard Challenge daily tasks',
-        theme_color: '#111827',
-        background_color: '#111827',
+        theme_color: '#0f1115',
+        background_color: '#0f1115',
         display: 'standalone',
         icons: [
           {
