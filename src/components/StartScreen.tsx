@@ -11,7 +11,6 @@ const rules = [
   { icon: '💧', text: 'Drink 1 gallon of water' },
   { icon: '🥗', text: 'Follow a diet — no cheat meals, no alcohol' },
   { icon: '📖', text: 'Read 10 pages of a non-fiction book' },
-  { icon: '📸', text: 'Take a daily progress photo' },
 ]
 
 export default function StartScreen({ onStart }: Props) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { ChallengeState, DayTasks } from './types'
-import { loadState, advanceStateIfNeeded, toggleTask, todayStr } from './storage'
+import { loadState, advanceStateIfNeeded, toggleTask, updateDayTask, addPreviousDay, todayStr } from './storage'
 import Dashboard from './components/Dashboard'
 import History from './components/History'
 import StartScreen from './components/StartScreen'
@@ -99,7 +99,13 @@ export default function App() {
             }
           />
         )}
-        {tab === 'history' && <History state={state} />}
+        {tab === 'history' && (
+          <History
+            state={state}
+            onUpdateTask={(date, task) => setState((s) => updateDayTask(s, date, task))}
+            onAddPreviousDay={() => setState((s) => addPreviousDay(s))}
+          />
+        )}
       </main>
 
       <nav className="tabbar">

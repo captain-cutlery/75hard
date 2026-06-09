@@ -4,7 +4,6 @@ export interface DayTasks {
   water: boolean;
   diet: boolean;
   reading: boolean;
-  photo: boolean;
 }
 
 export interface DayRecord {
@@ -26,7 +25,6 @@ export const TASK_LABELS: Record<keyof DayTasks, string> = {
   water:    'Drink 1 Gallon of Water',
   diet:     'Follow Your Diet',
   reading:  'Read 10 Pages',
-  photo:    'Progress Photo',
 }
 
 export const TASK_SUBS: Record<keyof DayTasks, string> = {
@@ -35,7 +33,6 @@ export const TASK_SUBS: Record<keyof DayTasks, string> = {
   water:    'No cheat — full gallon',
   diet:     'No cheat meals, no alcohol',
   reading:  'Non-fiction or self-help book',
-  photo:    'One photo, every day',
 }
 
 export const TASK_ICONS: Record<keyof DayTasks, string> = {
@@ -44,7 +41,6 @@ export const TASK_ICONS: Record<keyof DayTasks, string> = {
   water:    '💧',
   diet:     '🥗',
   reading:  '📖',
-  photo:    '📸',
 }
 
 export const TASK_ORDER: (keyof DayTasks)[] = [
@@ -53,5 +49,4 @@ export const TASK_ORDER: (keyof DayTasks)[] = [
   'water',
   'diet',
   'reading',
-  'photo',
 ]

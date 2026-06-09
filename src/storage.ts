@@ -8,7 +8,6 @@ const emptyTasks = (): DayTasks => ({
   water: false,
   diet: false,
   reading: false,
-  photo: false,
 })
 
 const defaultState = (): ChallengeState => ({
@@ -122,6 +121,41 @@ export function toggleTask(
   saveState(next)
   return next
 }
+
+export function updateDayTask(
+  state: ChallengeState,
+  date: string,
+  task: keyof DayTasks
+): ChallengeState {
+  const history = state.history.map((record): DayRecord => {
+    if (record.date !== date) return record
+    const tasks = { ...record.tasks, [task]: !record.tasks[task] }
+    const completed = Object.values(tasks).every(Boolean)
+    return { ...record, tasks, completed }
+  })
+  const next = { ...state, history }
+  saveState(next)
+  return next
+}
+
+export function addPreviousDay(state: ChallengeState): ChallengeState {
+  const earliest = state.history[0]
+  if (!earliest || state.history.length >= 75) return state
+
+  const d = new Date(earliest.date + 'T00:00')
+  d.setDate(d.getDate() - 1)
+  const prevDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+
+  const next: ChallengeState = {
+    ...state,
+    startDate: prevDate,
+    currentDay: state.currentDay + 1,
+    history: [{ date: prevDate, tasks: emptyTasks(), completed: false }, ...state.history],
+  }
+  saveState(next)
+  return next
+}
+
 
 export function getTodayRecord(state: ChallengeState): DayRecord | null {
   const today = todayStr()
